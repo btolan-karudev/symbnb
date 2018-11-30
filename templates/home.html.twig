@@ -1,34 +1,139 @@
 {% extends "base.html.twig" %}
 
+{% block title %}
+    Bienvenuti a la reteaua meiora d apartamento ...
+{% endblock %}
 
 {% block body %}
-    <div class="jumbotron">
-        <h1 class="display-3">Hello, world!</h1>
-        <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-        <hr class="my-4">
-        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-        <p class="lead">
-            <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-        </p>
+    <div class="container">
+
+        <div class="jumbotron mt-3">
+            <h1 class="display-3">Bienvenu sur SymBNB</h1>
+            <p class="lead">We are here to help you find opportunities to rent a location at the best price. We have
+                selectionated the best for you.</p>
+            <hr class="my-4">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci dolorum, hic impedit iusto nesciunt
+                recusandae rerum temporibus ut? Dicta expedita iste non similique! Aspernatur deleniti ex incidunt nemo
+                odio perspiciatis.</p>
+            <p class="lead">
+                <a class="btn btn-primary btn-lg" href="#" role="button">Voir les annonces</a>
+            </p>
+        </div>
+
+        <h2 class="mt-3 mb-4">Nos appartements star de star</h2>
+
+        <div class="row">
+
+            <div class="col-md-4">
+                <div class="card bg-light mb-3">
+                    <div class="card-header text-center">
+                        3 chambres, <strong> 49 &euro; / nuit </strong> <br>
+                        <small>pas de note pour l instant</small>
+                    </div>
+
+                    <img src="http://placehold.it/1000x400" alt="Image de l appartement"
+                         style="height: 200px; width: 100%; display: block">
+
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            Appartement de luxe !!!
+                        </h4>
+                        <p class="card-text">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium cumque dolores eos
+                            inventore maxime minus officia repellat repudiandae sunt voluptates.
+                        </p>
+                        <a href="#" class="btn btn-secondary"> En savoir d avantage </a>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card bg-light mb-3">
+                    <div class="card-header text-center">
+                        3 chambres, <strong> 49 &euro; / nuit </strong> <br>
+                        <small>pas de note pour l instant</small>
+                    </div>
+
+                    <img src="http://placehold.it/1000x400" alt="Image de l appartement"
+                         style="height: 200px; width: 100%; display: block">
+
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            Appartement de luxe !!!
+                        </h4>
+                        <p class="card-text">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium cumque dolores eos
+                            inventore maxime minus officia repellat repudiandae sunt voluptates.
+                        </p>
+                        <a href="#" class="btn btn-secondary"> En savoir d avantage </a>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card bg-light mb-3">
+                    <div class="card-header text-center">
+                        3 chambres, <strong> 49 &euro; / nuit </strong> <br>
+                        <small>pas de note pour l instant</small>
+                    </div>
+
+                    <img src="http://placehold.it/1000x400" alt="Image de l appartement"
+                         style="height: 200px; width: 100%; display: block">
+
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            Appartement de luxe !!!
+                        </h4>
+                        <p class="card-text">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium cumque dolores eos
+                            inventore maxime minus officia repellat repudiandae sunt voluptates.
+                        </p>
+                        <a href="#" class="btn btn-secondary"> En savoir d avantage </a>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <h2 class="mt-3 mb-4">Nos proprio star</h2>
+
+        <div class="row">
+            <div class="col">
+                <div class="card border-secondary mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            Beniamin Tolan
+                        </h4>
+
+                        <hr>
+
+                        <div class="card-text">
+                            <img src="http://placehold.it/64x64" alt="Avatar de benjito" class="float-left mr-3">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, iste?</p>
+                            <a href="#" class="btn btn-success float-right">Courieux ...</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card border-secondary mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            Beniamin Tolan
+                        </h4>
+
+                        <hr>
+
+                        <div class="card-text">
+                            <img src="http://placehold.it/64x64" alt="Avatar de benjito" class="float-left mr-3">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, iste?</p>
+                            <a href="#" class="btn btn-success float-right">Courieux ...</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
-
-{#<h1>Bonjour a tous</h1>#}
-{#<p>{{ title }}</p>#}
-{#<p>{{ age }}</p>#}
-
-{#{% for prenom, age in tabloulPrenume %}#}
-
-    {#<ul>#}
-        {#<li>#}
-            {#{{ loop.index }}: {{ prenom }} a {{ age }} ans.#}
-        {#</li>#}
-    {#</ul>#}
-
-{#{% endfor %}#}
-
-{#<ul>#}
-    {#{% for compteur in 0..100 %}#}
-        {#<li>{{ compteur }}</li>#}
-    {#{% endfor %}#}
-{#</ul>#}
 {% endblock %}
