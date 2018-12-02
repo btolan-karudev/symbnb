@@ -24,6 +24,6 @@ yarn-error.log
 ###< symfony/webpack-encore-bundle ###
 
 
-/public/.idea/
-/public/.gitignore
+.idea/
+.gitignore
 
