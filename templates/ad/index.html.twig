@@ -4,6 +4,33 @@
 
 {% block body %}
     <div class="container">
-        <h1>Voici nos annonces de nos hotes</h1>
+        <h1 class="my-3">Voici nos annonces de nos hotes</h1>
+        <div class="row">
+            {% for i in 0..20 %}
+                <div class="col-md-4">
+                    <div class="card bg-light mb-3">
+                        <div class="card-header text-center">
+                            3 chambres, <strong> 49 &euro; / nuit </strong> <br>
+                            <small>pas de note pour l instant</small>
+                        </div>
+
+                        <img src="http://placehold.it/1000x400" alt="Image de l appartement"
+                             style="height: 200px; width: 100%; display: block">
+
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                Appartement de luxe !!!
+                            </h4>
+                            <p class="card-text">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium cumque dolores eos
+                                inventore maxime minus officia repellat repudiandae sunt voluptates.
+                            </p>
+                            <a href="#" class="btn btn-secondary"> En savoir d avantage </a>
+                        </div>
+
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
     </div>
 {% endblock %}
