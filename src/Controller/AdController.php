@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 
+use App\Entity\Ad;
 use App\Repository\AdRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,9 +18,10 @@ class AdController extends AbstractController
     {
         $ads = $repo->findAll();
 
-        return $this->render('ad/index.html.twig', [
-            'ads' => $ads
-        ]);
+        return $this->render('ad/index.html.twig',
+            [
+                'ads' => $ads
+            ]);
     }
 
     /**
@@ -29,13 +31,11 @@ class AdController extends AbstractController
      *
      * @return Response
      */
-    public function show($slug, AdRepository $repo)
+    public function show(Ad $ad)
     {
-        //recuperation l annonce qui corespond au slug
-        $ad = $repo->findOneBySlug($slug);
-
-        return $this->render('ad/show.html.twig', [
-            'ad' => $ad
-        ]);
+        return $this->render('ad/show.html.twig',
+            [
+                'ad' => $ad
+            ]);
     }
 }
