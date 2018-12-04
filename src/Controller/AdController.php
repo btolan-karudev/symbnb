@@ -4,6 +4,7 @@ namespace App\Controller;
 
 
 use App\Entity\Ad;
+use App\Form\AnnonceType;
 use App\Repository\AdRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -35,17 +36,12 @@ class AdController extends AbstractController
     {
         $ad = new Ad();
 
-        $form = $this->createFormBuilder($ad)
-                     ->add('title')
-                     ->add('introduction')
-                     ->add('content')
-                     ->add('rooms')
-                     ->add('price')
-                     ->add('coverImage')
-                     ->getForm($ad);
+        $form = $this->createForm(AnnonceType::class, $ad);
 
 
-        return $this->render('ad/new.html.twig');
+        return $this->render('ad/new.html.twig', [
+            'form' => $form->createView()
+        ]);
 
     }
 
