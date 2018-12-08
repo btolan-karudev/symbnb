@@ -66,9 +66,10 @@ class AnnonceType extends AbstractType
                     'Indiquez le prix que vous voulez pour une nuit'))
             ->add('images', CollectionType::class,
                 [
-                    'entry_type' => ImageType::class
+                    'entry_type' => ImageType::class,
+                    'allow_add' => true
                 ]
-                )
+            )
             ->add('save', SubmitType::class,
                 [
                     'label' => 'Creer la nouvelle annonce',
