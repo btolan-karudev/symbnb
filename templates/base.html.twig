@@ -25,6 +25,8 @@
     <script src="/public/js/boostrap.min.js"></script>
 
     <script>
+        handleDeleteButtons();
+
         $('#add-image').click(function () {
             // je vais recuperer le numer des futures champs que je vais creer
             const index = $('#annonce_images div.form-group').length;
@@ -35,7 +37,18 @@
             //j injecte ce code au sein de la div
             $('#annonce_images').append(tmpl);
 
+            // manipulation des button supprimer
+            handleDeleteButtons();
+
         });
+        
+        function handleDeleteButtons() {
+            $('button[data-action="delete"]').click(function () {
+                const target = this.dataset.target;
+                $(target).remove();
+            })
+        }
+
     </script>
 {% endblock %}
 </body>
