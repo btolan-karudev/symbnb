@@ -21,16 +21,19 @@ class AnnonceType extends AbstractType
      *
      * @param $label
      * @param $placeholder
+     * @param array $options
      * @return array
      */
-    private function getConfiguration($label, $placeholder)
+    private function getConfiguration($label, $placeholder, $options = [])
     {
-        return [
+        return array_merge([
             'label' => $label,
             'attr' => [
                 'placeholder' => $placeholder
             ]
-        ];
+
+        ],
+            $options);
     }
 
     public function buildForm(FormBuilderInterface $builder, array $options)
@@ -43,7 +46,8 @@ class AnnonceType extends AbstractType
             ->add('slug', TextType::class,
                 $this->getConfiguration(
                     'Chaine URL',
-                    'Adresse web (automatique)'))
+                    'Adresse web (automatique)',
+                    ['required' => false]))
             ->add('coverImage', UrlType::class,
                 $this->getConfiguration(
                     'URL de l\'image',
