@@ -74,12 +74,13 @@ class AnnonceType extends AbstractType
                     'allow_add' => true
                 ]
             )
-            ->add('save', SubmitType::class,
-                [
-                    'label' => 'Creer la nouvelle annonce',
-                    'attr' => [
-                        'class' => 'btn btn-primary'
-                    ]]);
+//            ->add('save', SubmitType::class,
+//                [
+//                    'label' => 'Creer la nouvelle annonce',
+//                    'attr' => [
+//                        'class' => 'btn btn-primary'
+//                    ]])
+        ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
