@@ -8,10 +8,18 @@ use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use Faker\Factory;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 
 class AppFixtures extends Fixture
 {
+    private $encoder;
+
+    public function __construct(UserPasswordEncoderInterface $encoder)
+    {
+        $this->encoder = $encoder;
+    }
+
     /**
      * @param ObjectManager $manager
      */
@@ -21,16 +29,27 @@ class AppFixtures extends Fixture
 
         // Nous gerons les utilisateurs
         $users = [];
+        $genders = ['men', 'women'];
 
         for ($i = 1; $i <= 10; $i++) {
             $user = new User();
 
-            $user->setFirstName($faker->firstName)
+            $gender = $faker->randomElement($genders);
+
+            $picture = 'https://randomuser.me/api/portraits/';
+            $pictureId = $faker->numberBetween(1, 99) . '.jpg';
+
+            $picture .= "$gender/" . $pictureId;
+
+            $hash = $this->encoder->encodePassword($user, 'password');
+
+            $user->setFirstName($faker->firstName($gender))
                 ->setLastName($faker->lastName)
                 ->setEmail($faker->email)
                 ->setIntroduction($faker->sentence())
                 ->setDescription('<p>' . join('</p><p>', $faker->paragraphs(3)) . '</p>')
-                ->setHash('password');
+                ->setHash($hash)
+                ->setPicture($picture);
 
             $manager->persist($user);
             $users[] = $user;
@@ -54,8 +73,7 @@ class AppFixtures extends Fixture
                 ->setContent($content)
                 ->setPrice(mt_rand(99, 999))
                 ->setRooms(mt_rand(1, 5))
-                ->setAuthor($user)
-            ;
+                ->setAuthor($user);
 
             for ($j = 1; $j <= mt_rand(2, 5); $j++) {
                 $image = new Image();
