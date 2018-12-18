@@ -15,6 +15,12 @@
                 pour <strong>{{ ad.price }}&euro;</strong> par nuit
             </p>
             <a href="#" class="btn btn-primary">Reserver maintenant!</a>
+            {% if app.user and app.user == ad.author %}
+                <a href="{{ path('ads_edit', {'slug': ad.slug}) }}" class="btn btn-secondary">Modifier l'annonce</a>
+                <a href="{{ path('ads_delete', {'slug': ad.slug}) }}" class="btn btn-warning" onclick="return confirm
+                (`Etes vous sur de vouloir supprimer l annonce: {{ ad.title }}`)">
+                    Supprimer l'annonce</a>
+            {% endif %}
         </div>
     </div>
 
@@ -58,17 +64,17 @@
                 <div class="row">
                     <div class="col-3">
                         <a href="{{ path('user_show', {'slug': a.slug}) }}">
-                        <img src="{{ a.picture }}" class="avatar avatar-medium" alt="Avatar de {{ a.fullName }}">
+                            <img src="{{ a.picture }}" class="avatar avatar-medium" alt="Avatar de {{ a.fullName }}">
                         </a>
                     </div>
                     <div class="col">
                         <a href="{{ path('user_show', {'slug': a.slug}) }}">
-                        <h3>{{ a.fullName }}</h3>
+                            <h3>{{ a.fullName }}</h3>
                         </a>
                         <span class="badge badge-primary">{{ a.ads |length }} annonces</span>
                     </div>
                 </div>
-                {{ a.description | raw}}
+                {{ a.description | raw }}
             </div>
         </div>
     </div>

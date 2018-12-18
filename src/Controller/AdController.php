@@ -80,7 +80,7 @@ class AdController extends AbstractController
      *
      * @Route("/ads/{slug}/edit", name="ads_edit")
      * @Security("is_granted('ROLE_USER') and user === ad.getAuthor()",
-     message="Cette annonce ne vous appartient pas, vous ne pouvez pas la modifier")
+    message="Cette annonce ne vous appartient pas, vous ne pouvez pas la modifier")
      *
      * @param Ad $ad
      * @param Request $request
@@ -133,6 +133,29 @@ class AdController extends AbstractController
             [
                 'ad' => $ad
             ]);
+    }
+
+    /**
+     * Permet la suppresion d'une annonce
+     *
+     * @Route("/ads/{slug}/delete", name="ads_delete")
+     * @Security("is_granted('ROLE_USER') and user == ad.getAuthor()",
+    message="Vous n'avez pas le droit d'acceder a cette resouce.")
+     *
+     * @param Ad $ad
+     * @param ObjectManager $manager
+     */
+    public function delete(Ad $ad, ObjectManager $manager)
+    {
+        $manager->remove($ad);
+        $manager->flush();
+
+        $this->addFlash(
+            'success',
+            "L'annonce a bien ete suprimée !"
+        );
+
+        return $this->redirectToRoute("ads_index");
     }
 
 
