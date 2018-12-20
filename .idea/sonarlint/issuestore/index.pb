@@ -31,3 +31,9 @@ P
  src/DataFixtures/AppFixtures.php,b\d\bd40e5504ff9d25586c516537316c24981df19f7
 C
 src/Entity/User.php,0\a\0a3e99b9da178509aeb5b3fa6f5dce46bc0eb8be
+T
+$src/Controller/BookingController.php,7\a\7aa6b45f84fde98ac20527751ea6c231269f4e9c
+H
+src/Form/BookingType.php,f\f\ff08c8c5132bd22f7a34d6442ce79619eed19ba4
+P
+ templates/booking/book.html.twig,0\3\03f265b2e8093895140f9a5e4500b26f8d9ffd72
