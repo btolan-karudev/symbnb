@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Booking;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -24,6 +25,12 @@ class BookingType extends ApplicationType
                     "Date de départ",
                     "la date à laquelle vous quittez les lieux",
                     ["widget" => "single_text"]
+                )
+            )
+            ->add('comment', TextareaType::class,
+                $this->getConfiguration(
+                    false,
+                    "Si vous avez une comentaire n'ezitez pas"
                 )
             )
         ;
