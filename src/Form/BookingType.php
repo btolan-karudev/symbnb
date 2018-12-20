@@ -13,12 +13,18 @@ class BookingType extends ApplicationType
     {
         $builder
             ->add('startDate', DateType::class,
-                $this->getConfiguration("Date d'arriver",
-                    "La date à laquelle vous compter arriver")
+                $this->getConfiguration(
+                    "Date d'arriver",
+                    "La date à laquelle vous compter arriver",
+                    ["widget" => "single_text"]
                 )
+            )
             ->add('endDate', DateType::class,
-                $this->getConfiguration("Date de départ",
-                    "la date à laquelle vous quittez les lieux")
+                $this->getConfiguration(
+                    "Date de départ",
+                    "la date à laquelle vous quittez les lieux",
+                    ["widget" => "single_text"]
+                )
             )
         ;
     }
