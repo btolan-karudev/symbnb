@@ -37,3 +37,7 @@ H
 src/Form/BookingType.php,f\f\ff08c8c5132bd22f7a34d6442ce79619eed19ba4
 P
  templates/booking/book.html.twig,0\3\03f265b2e8093895140f9a5e4500b26f8d9ffd72
+P
+ templates/booking/show.html.twig,7\2\726d9598155af67ffd32502b3ce099d613ae9627
+F
+src/Entity/Booking.php,2\d\2db8778b6f8186110e9de28e18d176a643a91028

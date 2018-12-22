@@ -64,7 +64,8 @@ class Booking
      *
      * @throws \Exception
      */
-    public function prePersist() {
+    public function prePersist()
+    {
         if (empty($this->createdAt)) {
             $this->createdAt = new \DateTime();
         }
@@ -74,7 +75,55 @@ class Booking
         }
     }
 
-    public function getDuration() {
+    public function isBookableDates()
+    {
+        # 1. Faut connatre les dattes qui sont indisponible pour le annonce #
+        $notAvailebleDates = $this->ad->getNonAvailableDates();
+
+        # 2. I faut comparer avec la date choisi de l utilisateur final #
+        $bookingDays = $this->getDays();
+
+        $formatDay = function ($day) {
+            return $day->format('Y-m-d');
+        };
+
+        # Tableau contenant des chaines de characteres de mes journees#
+        $days = array_map($formatDay, $bookingDays);
+
+        $notAvaileble = array_map($formatDay, $notAvailebleDates);
+
+        foreach ($days as $day) {
+            if (array_search($day, $notAvaileble) !== false) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+
+    }
+
+    /**
+     * Permet de recuperer un tableau des journee qui correspond a ma reservation
+     *
+     * @return array In tableau d objet DateTime representant les jour de am reservation
+     */
+    public function getDays()
+    {
+        $resultat = range(
+            $this->getStartDate()->getTimestamp(),
+            $this->getEndDate()->getTimestamp(),
+            24 * 60 * 60
+        );
+
+        $days = array_map(function ($dayTimestamp) {
+            return new \DateTime(date('Y-m-d', $dayTimestamp));
+        }, $resultat);
+
+        return $days;
+    }
+
+    public function getDuration()
+    {
         $diff = $this->endDate->diff($this->startDate);
         return $diff->days;
     }

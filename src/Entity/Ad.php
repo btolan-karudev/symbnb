@@ -29,7 +29,7 @@ class Ad
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\Length(min=10, max=255, minMessage="Le titre doit faire plus de 10 characteres",
-                                        maxMessage="Le titre ne peut pas faire plus de 255 characters")
+    maxMessage="Le titre ne peut pas faire plus de 255 characters")
      */
     private $title;
 
@@ -83,6 +83,9 @@ class Ad
      */
     private $bookings;
 
+    /**
+     * Ad constructor.
+     */
     public function __construct()
     {
         $this->images = new ArrayCollection();
@@ -105,6 +108,35 @@ class Ad
         }
     }
 
+    /**
+     * Permet de recuperer les dates qui sont deja reservee
+     *
+     * @return array Un tableau d'objets DateTime representatnt les jour deja reservee
+     */
+    public function getNonAvailableDates()
+    {
+        $notAvailableDates = [];
+
+        foreach ($this->bookings as $booking) {
+            # Calculer les jours qui se trouve entre la date d arriver et de depart #
+
+            $resultat = range(
+                $booking->getStartDate()->getTimestamp(),
+                $booking->getEndDate()->getTimestamp(),
+                24 * 60 * 60
+            );
+
+            $days = array_map(function ($dayTimestamp) {
+                return new \DateTime(date('Y-m-d', $dayTimestamp));
+            }, $resultat);
+
+            $notAvailableDates = array_merge($notAvailableDates, $days);
+
+        }
+
+        return $notAvailableDates;
+
+    }
 
     public function getId(): ?int
     {
