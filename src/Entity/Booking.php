@@ -33,12 +33,14 @@ class Booking
     /**
      * @ORM\Column(type="datetime")
      * @Assert\Date(message="La date doit etre au bon format !")
+     * @Assert\GreaterThan("today", message="La date d arriver doit etre ulterieure a la date d aujourd'hui!")
      */
     private $startDate;
 
     /**
      * @ORM\Column(type="datetime")
      * @Assert\Date(message="La date doit etre au bon format !")
+     * @Assert\GreaterThan(propertyPath="startDate", message="La date de depart doit etre plus eloignee que la date d arrivee !")
      */
     private $endDate;
 
