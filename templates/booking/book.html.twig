@@ -40,3 +40,21 @@
     </div>
 
 {% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        $(document).ready(function () {
+            $('#booking_startDate, #booking_endDate').datepicker({
+                format: 'dd/mm/yyyy',
+                datesDisabled: [
+                    {% for day in ad.nonAvailableDates %}
+                    "{{ day.format('d/m/Y') }}",
+                    {% endfor %}
+                ],
+                startDate: new Date()
+            });
+        })
+    </script>
+
+{% endblock %}
