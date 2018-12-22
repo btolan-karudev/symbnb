@@ -7,6 +7,8 @@
     {% block stylesheets %}
         <link href="/public/css/boostrap.min.css" rel="stylesheet">
         <link href="/public/css/app.css" rel="stylesheet">
+        <link rel="stylesheet"
+              href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css"/>
     {% endblock %}
 </head>
 
@@ -23,6 +25,21 @@
     <script src="/public/js/jquery-3.3.1.js"></script>
     <script src="/public/js/popper.min.js"></script>
     <script src="/public/js/boostrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#booking_startDate, #booking_endDate').datepicker({
+                format: 'dd/mm/yyyy',
+                datesDisabled: [
+                    {% for day in ad.nonAvailableDates %}
+                    "{{ day.format('d/m/Y') }}",
+                    {% endfor %}
+                ],
+                startDate: new Date()
+            });
+        })
+    </script>
 
 {% endblock %}
 </body>
