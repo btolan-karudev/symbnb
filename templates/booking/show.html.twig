@@ -8,7 +8,20 @@
         <h1>Votre réservation N° : {{ booking.id }}</h1>
 
         {% if app.request.query.get('withAlert') %}
-            <div class="alert"></div>
+            <div class="alert alert-success">
+                <h4 class="alert-heading">Bravo</h4>
+                <p>
+                    Votre réservation auprès de
+                    <strong>
+                        <a href="{{ path('user_show', {'slug': booking.ad.author.slug}) }}">{{ booking.ad.author.fullName }}</a>
+                    </strong>
+                    pour l'annonce
+                    <strong>
+                        <a href="{{ path('ads_show', {'slug': booking.ad.slug}) }}">{{ booking.ad.title }}</a>
+                    </strong>
+                    à bien été prise en compte !
+                </p>
+            </div>
         {% endif %}
 
         <div class="row">
