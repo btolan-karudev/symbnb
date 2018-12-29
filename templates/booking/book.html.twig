@@ -3,12 +3,16 @@
 {% block title %}Réserver l'annonce : {{ ad.title }}{% endblock %}
 
 
+
 {% block body %}
+
 
     <div class="container">
         <h1>Réserver pour l'annonce : {{ ad.title }}</h1>
         <p>Vous etes sur le point de reserver le bien de
-            <strong>{{ ad.author.fullName }}</strong>, dites nous tout, on s'occupe du reste !</p>
+            <strong>{{ ad.author.fullName }}</strong>, dites nous tout, on s'occupe du reste !
+            😁😁😁😒👌🤷‍♀️🤦‍♂️😉🐱‍💻✌🤷‍♀️💋😜🐱‍💻🐱‍👤🤳🐱‍🚀🐱‍👓🐱‍👓✔✔
+        </p>
 
         {{ form_start(form) }}
 
@@ -44,9 +48,9 @@
 
 {% endblock %}
 
-{% block javascript %}
+{% block javascripts %}
 
-    {#{{ parent() }}#}
+    {{ parent() }}
     <script>
         $(document).ready(function () {
             $('#booking_startDate, #booking_endDate').datepicker({
