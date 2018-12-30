@@ -115,6 +115,24 @@ class Ad
     }
 
     /**
+     * @return float|int
+     */
+    public function getAvgRatings()
+    {
+        # Calculer la somme des notations #
+        $sum = array_reduce($this->comments->toArray(), function ($total, $comment) {
+            return $total + $comment->getRating();
+        }, 0);
+        # Obtenir la moyenne #
+        if (count($this->comments) > 0) {
+            $moyenne = $sum / count($this->comments);
+        } else {
+            $moyenne = 0;
+        }
+        return $moyenne;
+    }
+
+    /**
      * Permet de recuperer les dates qui sont deja reservee
      *
      * @return array Un tableau d'objets DateTime representatnt les jour deja reservee
