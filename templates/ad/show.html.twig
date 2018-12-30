@@ -18,7 +18,7 @@
             {% if app.user and app.user == ad.author %}
                 <a href="{{ path('ads_edit', {'slug': ad.slug}) }}" class="btn btn-secondary">Modifier l'annonce</a>
                 <a href="{{ path('ads_delete', {'slug': ad.slug}) }}" class="btn btn-warning" onclick="return confirm
-                (`Etes vous sur de vouloir supprimer l annonce: {{ ad.title }}`)">
+                        (`Etes vous sur de vouloir supprimer l annonce: {{ ad.title }}`)">
                     Supprimer l'annonce</a>
             {% endif %}
         </div>
@@ -58,6 +58,25 @@
                         <span class="sr-only">Next</span>
                     </a>
                 </div>
+
+                <hr>
+
+                {% if ad.comments | length > 0 %}
+                    <h2 class="mb-3">Commentaires de nos voyageurs:</h2>
+                    {% for comment in ad.comments %}
+                        <div class="bg-light rounded mb-3 py-3 px-3">
+                            <strong>{{ comment.author.fullName }}</strong> a dit:
+                            <blockquote>
+                                {{ comment.content }}
+                            </blockquote>
+                            <strong>Note donne par {{ comment.author.fullName }}:</strong>
+                            {% include 'partials/rating.html.twig' with {'rating': comment.rating}%}
+
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <h2>Cette annonce na pas encore recu de commentaires ...</h2>
+                {% endif %}
             </div>
             <div class="col">
                 {% set a = ad.author %}
