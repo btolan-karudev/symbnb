@@ -69,7 +69,7 @@
                     </a>
                 </div>
 
-                <div class="alert alert-light">
+                <div class="alert alert-light" id="comment">
                     <h2 class="alert-heading">Votre avis compte!</h2>
                     {% if date() > date(booking.endDate) %}
                         {% set comment = booking.ad.commentFromAuthor(app.user) %}
@@ -81,7 +81,7 @@
                         {% else %}
                             {{ form_start(form) }}
                             {{ form_widget(form) }}
-                            <button type="submit" class="btn btn-success">Confirmer \!</button>
+                            <button type="submit" class="btn btn-success">Confirmer</button>
                             {{ form_end(form) }}
                         {% endif %}
 
