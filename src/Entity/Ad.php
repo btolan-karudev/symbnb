@@ -115,6 +115,22 @@ class Ad
     }
 
     /**
+     * Permet de recuperer une commentaire d un author par rapport a une annonce
+     *
+     * @param User $author
+     * @return mixed|null
+     */
+    public function getCommentFromAuthor(User $author)
+    {
+        foreach ($this->comments as $comment) {
+            if ($comment->getAuthor() === $author) return $comment;
+        }
+        return null;
+    }
+
+    /**
+     * Permet d obtenir la note globale des notes pour cette annonce
+     *
      * @return float|int
      */
     public function getAvgRatings()
