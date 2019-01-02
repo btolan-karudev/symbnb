@@ -12,7 +12,7 @@
             <p>{{ ad.introduction }}</p>
             <p class="h2">
                 <strong>{{ ad.rooms }} chambres</strong>
-                pour <strong>{{ ad.price }}&euro;</strong> par nuit
+                pour <strong>{{ ad.price | number_format(2, ',', ' ') }} &euro;</strong> par nuit
             </p>
             <a href="{{ path('create_booking', {'slug': ad.slug}) }}" class="btn btn-primary">Reserver maintenant!</a>
             {% if app.user and app.user == ad.author %}

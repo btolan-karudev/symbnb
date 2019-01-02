@@ -5,7 +5,7 @@
 {% block body %}
 
     <div class="container">
-        <h1>Mes reservations</h1>
+        <h1 class="my-5">Mes reservations</h1>
         <div class="alert alert-info mt-5">
             <p>Retrouvez ci-dessous toutes vos reservations passees et a venir</p>
         </div>
@@ -30,7 +30,7 @@
                     <p>
                         Réservation <strong>n° {{ booking.id }}</strong><br>
                         Du {{ booking.startDate |date('d/m/Y') }} au {{ booking.endDate |date('d/m/Y') }}
-                        ({{ booking.amount }} &euro;)
+                        ({{ booking.amount | number_format(2, ',', ' ') }} &euro;)
                     </p>
                     <a href="{{ path('booking_show', {'id': booking.id}) }}" class="btn btn-info">
                         Plus d'information

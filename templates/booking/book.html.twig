@@ -8,17 +8,16 @@
 
 
     <div class="container">
-        <h1>Réserver pour l'annonce : {{ ad.title }}</h1>
+        <h1>Réserver pour l'annonce : <em>{{ ad.title }}</em></h1>
         <p>Vous etes sur le point de reserver le bien de
             <strong>{{ ad.author.fullName }}</strong>, dites nous tout, on s'occupe du reste !
-            😁😁😁😒👌🤷‍♀️🤦‍♂️😉🐱‍💻✌🤷‍♀️💋😜🐱‍💻🐱‍👤🤳🐱‍🚀🐱‍👓🐱‍👓✔✔
         </p>
 
         {{ form_start(form) }}
 
         <div class="alert alert-light">
 
-            <h2>Commencez par nous dire quelles sont les dates qui vous interessent !</h2>
+            <h2 class="h4">Commencez par nous dire quelles sont les dates qui vous interessent !</h2>
             <div class="row">
                 <div class="col">
                     {{ form_row(form.startDate) }}
@@ -28,8 +27,8 @@
                 </div>
             </div>
 
-            <h4>Montant de votre séjour: <span id="amount">...</span> &euro; </h4>
-            <span id="days">0</span> nuit(s) à {{ ad.price }} €/ nuit
+            <h4 class="mt-2">Montant de votre séjour: <span id="amount">...</span> &euro; </h4>
+            <span id="days">0</span> nuit(s) à {{ ad.price | number_format(2, ',', ' ') }} &euro; par nuit
 
             <h4 class="mt-3">Vous avez une commentaire ?</h4>
             {{ form_row(form.comment) }}
@@ -64,7 +63,6 @@
             });
 
             $('#booking_startDate, #booking_endDate').on('change', calculateAmount);
-            console.log("hello");
 
         });
 
