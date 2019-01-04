@@ -21,10 +21,15 @@
                 </h4>
             </div>
             <div class="card-body">
-                <form action="" method="post">
+                {% if hasError %}
+                    <div class="alert alert-warning">
+                        <p>L’email ou le mot de passe est incorrect.</p>
+                    </div>
+                {% endif %}
+                <form  method="post">
                     <div class="form-group">
                         <label for="_username">Email</label>
-                        <input type="text" class="form-control" placeholder="Adresse email..." name="_username">
+                        <input type="text" class="form-control" placeholder="Adresse email..." name="_username" value="{{ username }}">
                     </div>
                     <div class="form-group">
                         <label for="_password">Mot de passe</label>
