@@ -45,7 +45,6 @@ class AdminCommentController extends AbstractController
             $manager->persist($comment);
             $manager->flush();
 
-            $this->redirectToRoute('admin_comments_index');
 
             $this->addFlash(
                 'success',
@@ -53,11 +52,37 @@ class AdminCommentController extends AbstractController
                 <strong>{$comment->getAd()->getTitle()}</strong>
                  a bien été modifiée !"
             );
+
+            return $this->redirectToRoute('admin_comments_index');
+
         }
 
         return $this->render('admin/comment/edit.html.twig', [
             'comment' => $comment,
             'form' => $form->createView()
         ]);
+    }
+
+    /**
+     * Permet de suprimer un commentaire
+     *
+     * @Route("/admin/comments/{id}/delete", name="admin_comments_delete")
+     *
+     * @param Comment $comment
+     * @param ObjectManager $manager
+     *
+     * @return Response
+     */
+    public function delete(Comment $comment, ObjectManager $manager)
+    {
+            $manager->remove($comment);
+            $manager->flush();
+
+            $this->addFlash(
+                'success',
+                "Le commentaire de <strong>{$comment->getAuthor()->getFullName()}</strong> a bien été supprimée !"
+            );
+
+        return $this->redirectToRoute('admin_comments_index');
     }
 }

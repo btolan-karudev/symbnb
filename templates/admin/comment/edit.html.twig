@@ -11,29 +11,26 @@
 
         {{ form_start(form) }}
 
-        <div class="row">
-            <div class="col">
-                <div class="card bg-light mt-5">
-                    <div class="card-body btn-primary">
-                        <dd><strong>Annonce liée</strong>: {{ comment.ad.title }}</dd>
-                        <dd><strong>Auteur</strong>: {{ comment.author.fullName }}</dd>
-                        <dd><strong>Date de creation</strong>: {{ comment.createdAt | date('fr') }}</dd>
-                        <dd><strong>Note donnée</strong>:{{ comment.rating }}</dd>
-                    </div>
-                </div>
-                <div class="card bg-light">
-                    <div class="card-body">
-                        {{ form_widget(form) }}
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-12 text-center mt-5">
-                <button type="submit" class="btn btn-primary">
-                    <i class="fas fa-check"></i>
-                    Enregistrer les modifications
-                </button>
+
+        <div class="alert alert-info mt-5">
+
+                <dd><strong>Annonce liée</strong>: {{ comment.ad.title }}</dd>
+                <dd><strong>Auteur</strong>: {{ comment.author.fullName }}</dd>
+                <dd><strong>Date de creation</strong>: {{ comment.createdAt | date('fr') }}</dd>
+                <dd><strong>Note donnée</strong>: {{ comment.rating }}</dd>
+
+        </div>
+        <div class="card bg-light">
+            <div class="card-body">
+                {{ form_widget(form) }}
             </div>
         </div>
+    </div>
+    <div class="col-md-12 text-center mt-5">
+        <button type="submit" class="btn btn-primary">
+            <i class="fas fa-check"></i>
+            Enregistrer les modifications
+        </button>
 
         {{ form_end(form) }}
 
