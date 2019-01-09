@@ -14,7 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class AdminBookingController extends AbstractController
 {
     /**
-     * @Route("/admin/bookings", name="admin_booking_index")
+     * @Route("/admin/bookings", name="admin_bookings_index")
      * @param BookingRepository $repo
      * @return Response
      */
@@ -60,5 +60,29 @@ class AdminBookingController extends AbstractController
             'form' => $form->createView(),
             'booking' => $booking
         ]);
+    }
+
+    /**
+     * Permet de suprimer une réservation
+     *
+     * @Route("/admin/bookings/{id}/delete", name="admin_bookings_delete")
+     *
+     * @param Booking $booking
+     * @param ObjectManager $manager
+     *
+     * @return Response
+     */
+    public function delete(Booking $booking, ObjectManager $manager)
+    {
+        $manager->remove($booking);
+        $manager->flush();
+
+        $this->addFlash(
+            'success',
+            "La réservation a bien été suprimée"
+        );
+
+        return $this->redirectToRoute('admin_bookings_index');
+
     }
 }
