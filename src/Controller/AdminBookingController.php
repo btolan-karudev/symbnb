@@ -26,17 +26,8 @@ class AdminBookingController extends AbstractController
         $pagination->setEntityClass(Booking::class)
             ->setCurrentPage($page);
 
-//        $bookings = $pagination->getData();
-//
-//        $total = count($repo->findAll());
-//        $pages = ceil($total / 10);
-
-
         return $this->render('admin/booking/index.html.twig', [
             'pagination' => $pagination
-//            'bookings' => $pagination->getData(),
-//            'pages' => $pagination->getPages(),
-//            'page' => $page
         ]);
     }
 
