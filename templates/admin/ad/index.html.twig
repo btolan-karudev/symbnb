@@ -52,19 +52,15 @@
                     <a class="page-link" href="{{ path('admin_ads_index', {'page': page - 1}) }}">&laquo;</a>
                 </li>
                 {% for i in 1..pages %}
-                <li class="page-item  {% if page == i %}active{% endif %}">
-                    <a class="page-link" href="{{ path('admin_ads_index', {'page': i}) }}">{{ i }}</a>
-                </li>
+                    <li class="page-item  {% if page == i %}active{% endif %}">
+                        <a class="page-link" href="{{ path('admin_ads_index', {'page': i}) }}">{{ i }}</a>
+                    </li>
                 {% endfor %}
                 <li class="page-item {% if page == pages %}disabled{% endif %}">
                     <a class="page-link" href="{{ path('admin_ads_index', {'page': page + 1}) }}">&raquo;</a>
                 </li>
             </ul>
         </div>
-
-
-
-
 
     </div>
 {% endblock %}
