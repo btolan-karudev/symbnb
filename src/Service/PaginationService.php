@@ -3,6 +3,9 @@
 namespace App\Service;
 
 use Doctrine\Common\Persistence\ObjectManager;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RequestStack;
+use Twig\Environment;
 
 class PaginationService
 {
@@ -10,10 +13,38 @@ class PaginationService
     private $limit = 10;
     private $currentPage = 1;
     private $manager;
+    private $twig;
+    private $route;
+    private $templatePath;
 
-    public function __construct(ObjectManager $manager)
+    /**
+     * PaginationService constructor.
+     * @param ObjectManager $manager
+     * @param Environment $twig
+     * @param RequestStack $request
+     * @param $templatePath
+     */
+    public function __construct(ObjectManager $manager, Environment $twig, RequestStack $request, $templatePath)
     {
-        $this->manager = $manager;
+        $this->route        = $request->getCurrentRequest()->attributes->get('_route');
+        $this->manager      = $manager;
+        $this->twig         = $twig;
+        $this->templatePath = $templatePath;
+    }
+
+    /**
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
+     */
+    public function display()
+    {
+        $this->twig->display($this->templatePath, [
+            'page' => $this->currentPage,
+            'pages' => $this->getPages(),
+            'route' => $this->route
+
+        ]);
     }
 
     public function getPages()
@@ -61,15 +92,6 @@ class PaginationService
         return $this;
     }
 
-    /**
-     * @param int $curentPage
-     * @return PaginationService
-     */
-    public function setCurentPage(int $curentPage): PaginationService
-    {
-        $this->curentPage = $curentPage;
-        return $this;
-    }
 
     /**
      * @return int
@@ -105,5 +127,41 @@ class PaginationService
     {
         $this->limit = $limit;
         return $this;
+    }
+
+    /**
+     * @param mixed $route
+     * @return PaginationService
+     */
+    public function setRoute($route)
+    {
+        $this->route = $route;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRoute()
+    {
+        return $this->route;
+    }
+
+    /**
+     * @param mixed $templatePath
+     * @return PaginationService
+     */
+    public function setTemplatePath($templatePath)
+    {
+        $this->templatePath = $templatePath;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTemplatePath()
+    {
+        return $this->templatePath;
     }
 }
