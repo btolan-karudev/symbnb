@@ -54,7 +54,7 @@ class AdminCommentController extends AbstractController
 
             $this->addFlash(
                 'success',
-                "Le commentaire relie a l annonce
+                "Le commentaire relie a l'annonce
                 <strong>{$comment->getAd()->getTitle()}</strong>
                  a bien été modifiée !"
             );
