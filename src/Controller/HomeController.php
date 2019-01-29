@@ -10,6 +10,7 @@ namespace App\Controller;
 
 
 use App\Repository\AdRepository;
+use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -32,21 +33,13 @@ class HomeController extends Controller
      * @param AdRepository $adRepo
      * @return Response
      */
-    public function home(AdRepository $adRepo)
+    public function home(AdRepository $adRepo, UserRepository $userRepo)
     {
-        $prenoms =
-            [
-                "Lior" => 45,
-                "Benjamin" => 31,
-                "Vendetta" => 12,
-                "Georgina" => 55,
-                "Veronica" => 35
-            ];
-
         return $this->render(
             'home.html.twig',
             [
-                "ads" => $adRepo->findBestAds(10)
+                "ads" => $adRepo->findBestAds(),
+                "users" => $userRepo->findBestUsers()
             ]
         );
     }

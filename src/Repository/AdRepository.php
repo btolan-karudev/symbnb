@@ -23,13 +23,13 @@ class AdRepository extends ServiceEntityRepository
      * @param $limit
      * @return Ad
      */
-    public function findBestAds($limit)
+    public function findBestAds($limit = 3)
     {
         return $this->createQueryBuilder('a')
-            ->select( 'a as annonce, AVG(c.rating) as avgRating')
             ->join('a.comments', 'c')
+            ->select( 'a as annonce, AVG(c.rating) as avgRatings')
             ->groupBy('a')
-            ->orderBy('avgRating', 'DESC')
+            ->orderBy('avgRatings', 'DESC')
             ->setMaxResults($limit)
             ->getQuery()
             ->getResult()
