@@ -9,6 +9,7 @@
 namespace App\Controller;
 
 
+use App\Repository\AdRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -28,8 +29,10 @@ class HomeController extends Controller
 
     /**
      * @Route("/", name="homepage")
+     * @param AdRepository $adRepo
+     * @return Response
      */
-    public function home()
+    public function home(AdRepository $adRepo)
     {
         $prenoms =
             [
@@ -43,9 +46,7 @@ class HomeController extends Controller
         return $this->render(
             'home.html.twig',
             [
-                'title' => "Buna ziua la toti",
-                "age" => 35,
-                "tabloulPrenume" => $prenoms
+                "ads" => $adRepo->findBestAds(10)
             ]
         );
     }
