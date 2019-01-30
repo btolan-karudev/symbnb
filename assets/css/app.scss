@@ -1,0 +1,66 @@
+@import url("./boostrap.min.css");
+
+div.container, div.container-fluid {
+  margin-top: 20px;
+}
+
+div.ad-title {
+  padding: 2em;
+  background-size: cover;
+  background-position: center center;
+
+  .btn {
+    margin-top: 1.4em;
+    font-size: 1.5em;
+    line-height: 1.5em;
+  }
+}
+
+
+div.ad-title h1, div.ad-title p {
+  color: white;
+  text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
+}
+
+
+div.carousel-caption {
+  text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
+}
+
+.avatar {
+  max-width: 128px;
+  max-height: 128px;
+  border-radius: 50%;
+}
+
+.avatar-medium {
+  max-width: 64px;
+  max-height: 64px;
+  border-radius: 50%;
+}
+
+.avatar-mini {
+  max-width: 27px;
+  max-height: 27px;
+}
+
+.avatar-micro {
+  max-width: 21px;
+  max-height: 21px;
+}
+
+.datepicker table tr td.disabled, .datepicker table tr td.disabled:hover {
+  color: firebrick !important;
+}
+
+span.rating i {
+  color: goldenrod;
+}
+
+.alert a {
+  text-decoration: none;
+}
+
+.alert .btn {
+  color: whitesmoke;
+}
